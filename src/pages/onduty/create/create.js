@@ -144,7 +144,7 @@ function EventSubmit ({ history, location }) {
   const [workListData, setWorkListData] = useState([])
   const [previewList, setPreviewList] = useState([])
   const [staffVisible, setStaffVisible] = useState(false)
-  // 接班人
+  // 接班人、值班人
   const [staffList, setStaffList] = useState({
     // 单选
     type: '1',
@@ -343,11 +343,28 @@ function EventSubmit ({ history, location }) {
             Toast.info('请选择接班人', 1)
             return
           }
+          if (handover.type === 2) {
+            if (!zbr.length) {
+              Toast.info('请选择值班人', 1)
+              return
+            }
+          }
           // 值班日志状态 0:待接班 1:草稿 2:已接班
           params.handoverStatus = 1
-          if (dutyPerson.length && dutyPerson[0].userId) {
+          // 正常交接
+          if (handover.type === 1) {
+            if (dutyPerson.length && dutyPerson[0].userId) {
+              // 接班人
+              params.successorId = dutyPerson.map((item) => item.userId).join(',')
+            }
+          }
+          // 单机交接
+          if (handover.type === 2) {
+            params.handoverPersonId = loadFromLocal('h5', 'userInfo').userId
+            // 值班人
+            params.watchName = zbr.map((item) => item.name).join(',')
             // 接班人
-            params.successorId = dutyPerson.map((item) => item.userId).join(',')
+            params.receiveName = dutyPerson.map((item) => item.name).join(',')
           }
           Toast.loading('请稍后...', 0)
           API.addRotaLog(params).then(() => {
@@ -387,10 +404,11 @@ function EventSubmit ({ history, location }) {
     }
     // 单机交接
     if (handover.type === 2) {
+      params.handoverPersonId = loadFromLocal('h5', 'userInfo').userId
       // 值班人
-      params.handoverPersonId = zbr.map((item) => item.name).join(',')
+      params.watchName = zbr.map((item) => item.name).join(',')
       // 接班人
-      params.successorId = dutyPerson.map((item) => item.name).join(',')
+      params.receiveName = dutyPerson.map((item) => item.name).join(',')
     }
     // 值班日志状态 0:待接班 1:草稿 2:已接班
     params.handoverStatus = 0
@@ -493,6 +511,14 @@ function EventSubmit ({ history, location }) {
     }
     const fetchDetail = async () => {
       const detail = await API.getRotaLogDetail({ id })
+      const userFormat = (str) => {
+        return str.split(',').map((wh, inx) => {
+          return {
+            userId: inx,
+            name: wh
+          }
+        })
+      }
       if (detail.extraResource) {
         setFileNormal(detail.extraResource.map((iu, io) => {
           const extraResourceUrl = detail.extraResourceUrl.split(',')
@@ -502,8 +528,22 @@ function EventSubmit ({ history, location }) {
           }
         }))
       }
-      if (detail.successorId) {
-        setdutyPerson([{ name: detail.successor, userId: detail.successorId }])
+      // 正常交接
+      if (handover.type === 1) {
+        if (detail.successorId) {
+          setdutyPerson([{ name: detail.successor, userId: detail.successorId }])
+        }
+      }
+      // 单机交接
+      if (handover.type === 2) {
+        if (detail.watchName) {
+          // 值班人
+          setZbr(userFormat(detail.watchName))
+        }
+        if (detail.receiveName) {
+          // 接班人
+          setdutyPerson(userFormat(detail.receiveName))
+        }
       }
       setModuleId(detail.templateId)
       setTextareaLog(detail.watchLog)
@@ -538,6 +578,8 @@ function EventSubmit ({ history, location }) {
     }
     fetchLog()
   }, [dateModal, watchLogType, eventValue])
+
+  console.log('dutyPerson', dutyPerson)
 
   return (
     <div className='scroll-view footer-reserved event-submie-view onduty-style'>

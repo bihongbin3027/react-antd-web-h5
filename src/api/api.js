@@ -256,7 +256,7 @@ class API extends Server {
   async updateRotaLog (params = {}) {
     try {
       let result = await this.axios('post', '/rotaLog/updateRotaLog', {
-        params
+        data: params
       })
       if (result) {
         return result.data
