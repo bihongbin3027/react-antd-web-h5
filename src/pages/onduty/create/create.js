@@ -579,8 +579,6 @@ function EventSubmit ({ history, location }) {
     fetchLog()
   }, [dateModal, watchLogType, eventValue])
 
-  console.log('dutyPerson', dutyPerson)
-
   return (
     <div className='scroll-view footer-reserved event-submie-view onduty-style'>
       <div className='event-time'>
