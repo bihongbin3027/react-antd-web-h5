@@ -59,6 +59,7 @@ function EventSubmit ({ history, location }) {
   const maxDate = moment.utc(moment().format()).toDate()
   const [time] = useState(moment().format('YYYY/MM/DD HH:mm'))
   const [dateModal, setDateModal] = useState(maxDate)
+  const [staffModalType, setStaffModalType] = useState(1)
   const [handover] = useState(() => {
     const { modules } = loadFromLocal('h5', 'userInfo')
     const tempFormat = (arr) => arr.map((temp, index) => ({ userId: index, name: temp.name }))
@@ -249,17 +250,29 @@ function EventSubmit ({ history, location }) {
     setDutyNormal(select)
   }
   const staffConfirm = () => {
-    setdutyPerson(dutyNormal)
+    // 正常交班
+    if (handover.type === 1) {
+      setdutyPerson(dutyNormal)
+    }
+    // 单机交班
+    if (handover.type === 2) {
+      if (staffModalType === 1) {
+        setZbr(dutyNormal)
+      }
+      if (staffModalType === 2) {
+        setdutyPerson(dutyNormal)
+      }
+    }
     setStaffVisible(false)
   }
   let paramsArr = () => {
     return {
       id,
       templateId: moduleId,
+      // 交接方式
+      handoverType: handover.type,
       // 附件
       serverIds: serverId.join(','),
-      // 值班人
-      handoverPersonId: zbr.map((item) => item.userId).join(','),
       // 值班日志内容
       watchLog: textareaLog,
       // 值班日志类型 3：行政处理 4：投诉建议
@@ -290,6 +303,7 @@ function EventSubmit ({ history, location }) {
     } else {
       // 值班人
       if (type === 1) {
+        setStaffModalType(1)
         setStaffList({
           type: '2',
           list: handover.shiftUserList
@@ -297,6 +311,7 @@ function EventSubmit ({ history, location }) {
       }
       // 接班人
       if (type === 2) {
+        setStaffModalType(2)
         setStaffList({
           type: '2',
           list: handover.successorList
@@ -347,6 +362,10 @@ function EventSubmit ({ history, location }) {
   }
   const nexts = () => {
     let params = paramsArr()
+    if (!zbr.length) {
+      Toast.info('请选择值班人', 1)
+      return
+    }
     if (!dutyPerson.length) {
       Toast.info('请选择接班人', 1)
       return
@@ -359,10 +378,22 @@ function EventSubmit ({ history, location }) {
       Toast.info('最多上传9张图片', 1)
       return
     }
+    // 正常交接
+    if (handover.type === 1) {
+      // 值班人
+      params.handoverPersonId = zbr.map((item) => item.userId).join(',')
+      // 接班人
+      params.successorId = dutyPerson.map((item) => item.userId).join(',')
+    }
+    // 单机交接
+    if (handover.type === 2) {
+      // 值班人
+      params.handoverPersonId = zbr.map((item) => item.name).join(',')
+      // 接班人
+      params.successorId = dutyPerson.map((item) => item.name).join(',')
+    }
     // 值班日志状态 0:待接班 1:草稿 2:已接班
     params.handoverStatus = 0
-    // 接班人
-    params.successorId = dutyPerson.map((item) => item.userId).join(',')
     Toast.loading('请稍后...', 0)
     API.addRotaLog(params).then(() => {
       Toast.hide()
@@ -519,7 +550,7 @@ function EventSubmit ({ history, location }) {
           <div className='event-flex-center'>
             <span className='tab-button-blue-small'>{eventValue.text}</span>
             {
-              (logTypeModal.length > 1 && !id) ? <em className='level-edit-icon eidt-icon' onClick={() => setDutyBool(true)} /> : null
+              (logTypeModal.length > 1 && !id && handover.type === 1) ? <em className='level-edit-icon eidt-icon' onClick={() => setDutyBool(true)} /> : null
             }
           </div>
         </div>
@@ -762,7 +793,7 @@ function EventSubmit ({ history, location }) {
           select={staffSelect}
           list={staffList.list}
           type={staffList.type}
-          mode='check'
+          mode={handover.type === 1 ? 'radio' : 'check'}
         />
       </Modal>
     </div>
