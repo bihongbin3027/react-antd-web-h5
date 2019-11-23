@@ -1,0 +1,60 @@
+@import '../../style/variables';
+
+.timelimit-view {
+  .text1 {
+    color: $color-text-primary;
+    font-size: 16px;
+    margin-top: 55px;
+    margin-bottom: 25px;
+  }
+  .duty-time {
+    color: $color-text-primary;
+    border-bottom: 1px solid $color-border-primary;
+    font-size: 24px;
+    padding-bottom: 5px;
+    margin-left: 18%;
+    margin-right: 18%;
+    margin-top: 50px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 10%;
+      bottom: 4px;
+      width: 24px;
+      height: 24px;
+      background: url('../../images/txt_start.png') no-repeat 0 0;
+      background-size: contain;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 10%;
+      bottom: 4px;
+      width: 24px;
+      height: 24px;
+      background: url('../../images/txt_end.png') no-repeat 0 0;
+      background-size: contain;
+    }
+  }
+  .duty_div {
+    h4 {
+      color: $color-text-primary;
+      font-size: 16px;
+      margin-top: 60px;
+    }
+  }
+  .duty-dl {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    dl {
+      margin-left: 19px;
+      margin-right: 19px;
+      dd {
+        color: $color-text-primary;
+        margin-top: 3px;
+      }
+    }
+  }
+}

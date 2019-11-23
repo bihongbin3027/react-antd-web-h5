@@ -1,0 +1,11 @@
+.crew-view {
+  .crew-ul-fixed {
+    position: fixed;
+    top: 92px;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}

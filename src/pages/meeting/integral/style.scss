@@ -1,0 +1,19 @@
+.meeting-integral {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background-color: #f7f7f7 !important;
+  .list-item-switch {
+    .am-list-content {
+      padding-bottom: 0;
+      color: #999 !important;
+      font-size: 14px !important;
+      i {
+        margin-right: 3px;
+        margin-top: 1px;
+      }
+    }
+  }
+  .leave {
+    margin-top: 12px;
+  }
+}

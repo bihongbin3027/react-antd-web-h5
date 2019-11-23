@@ -1,0 +1,30 @@
+@import '../../style/variables';
+
+.loading-v1 {
+  @keyframes loading {
+    0%, 100% {
+      transform: scale(0.0);
+    }
+    50% {
+      transform: scale(1.0);
+    }
+  }
+  > div {
+    position: absolute;
+    left: 0; 
+    right: 0;  
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+    opacity: 0.6;
+    border-radius: 50%;
+    background-color: $color-background-primary;
+    animation: loading 1.4s infinite ease-in;
+    z-index: 100;
+  }
+  > div:nth-child(2) {
+    animation-delay: -0.7s;
+  }
+}

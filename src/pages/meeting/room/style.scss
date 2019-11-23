@@ -1,0 +1,46 @@
+@import '../../../style/mixin';
+@import '../../../style/variables';
+
+.meeting-room {
+  .room-ul-dv {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 70px;
+    bottom: 50px;
+    width: 100%;
+    z-index: 1;
+    ul {
+      li {
+        background-color: #fff;
+        padding: 15px 12px 15px;
+        margin-bottom: 12px;
+        .dv-button {
+          @include flex-layout(center, space-between);
+        }
+        .dv-name {
+          font-size: 16px;
+          color: $color-text-primary;
+        }
+        p {
+          font-size: 12px;
+          color: $color-text-caption;
+          margin-top: 10px;
+          i {
+            vertical-align: top;
+            margin-top: -1px;
+            margin-right: 3px;
+          }
+        }
+        .dv-date {
+          font-size: 14px;
+          margin-top: 5px;
+          em {
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

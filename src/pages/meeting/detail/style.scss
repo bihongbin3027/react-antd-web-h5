@@ -1,0 +1,86 @@
+@import '../../../style/variables';
+@import '../../../style/mixin';
+
+.meeting-detail {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background-color: #f7f7f7 !important;
+  .meet-detail-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #fff;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .ml-tbox {
+    overflow: hidden;
+    @include border-b-1px();
+  }
+  .ml-title {
+    line-height: 32px;
+    font-size: 20px;
+    color: $color-text-primary;
+    margin-top: 10px;
+    span {
+      margin-left: 20px;
+    }
+  }
+  .ml-date {
+    margin-top: 12px;
+    margin-bottom: 15px;
+    i {
+      margin-top: 1px;
+      margin-right: 3px;
+      vertical-align: top;
+    }
+    span {
+      margin-left: 20px;
+    }
+  }
+  .ml-cont-text {
+    line-height: 28px;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .ml-file {
+    padding-left: 12px;
+    padding-right: 12px;
+    p {
+      text-align: center;
+      margin-bottom: 10px;
+      img {
+        vertical-align: top;
+      }
+    }
+  }
+  .placeholder_div {
+    height: 12px;
+  }
+  .meeting-detail-foot {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    height: 50px;
+    background-color: #fff;
+    z-index: 1;
+    li {
+      flex: 1;
+      @include border-t-1px();
+      @include flex-layout();
+      flex-direction: column;
+      p {
+        font-size: 12px;
+        transform: scale(0.85);
+        margin-top: -2px;
+      }
+    }
+  }
+  .tab-button-darkgray-small {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}

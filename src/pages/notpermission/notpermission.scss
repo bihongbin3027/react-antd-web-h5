@@ -1,0 +1,12 @@
+@import '../../style/variables';
+
+.permission-view {
+  .permission-list {
+    margin-top: 99px;
+    p {
+      color: $color-text-primary;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+.schedule-view {
+  .month-switch {
+    padding: 12px;
+    background-color: #fff;
+    margin-bottom: 12px;
+  }
+  .person-ul {
+    display: flex;
+    background-color: #fff;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    li {
+      display: flex;
+      flex: 0 0 24%;
+      justify-content: center;
+      align-items: center;
+      em {
+        width: 14px;
+        height: 14px;
+        flex: 0 0 14px;
+        margin-right: 12px;
+        border-radius: 3px;
+      }
+    }
+  }
+  .remarks {
+    padding: 12px;
+    margin-top: 12px;
+    background-color: #fff;
+    dt {
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    dd {
+      line-height: 1.4;
+      textarea {
+        width: 100%;
+        border: 0 none;
+        overflow: hidden;
+      }
+    }
+  }
+  .fc-widget-header {
+    .fc-sat,
+    .fc-sun {
+      color: #f90;
+      span {
+        border-radius: 3px;
+        padding: 4px 6px;
+        background-color: #fff5e5;
+      }
+    }
+  }
+  .fc-content-skeleton {
+    .fc-sat,
+    .fc-sun {
+      color: #f90;
+    }
+  }
+}

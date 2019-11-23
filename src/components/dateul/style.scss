@@ -1,0 +1,58 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.dateul-room {
+  background-color: #fff;
+  .room-top {
+    padding: 15px 12px;
+    @include border-b-1px();
+    .room-month {
+      width: 48px;
+      height: 40px;
+      font-size: 16px;
+      color: #fff;
+      background-color: $color-background-primary;
+      border-radius: 6px;
+      @include flex-layout();
+      i {
+        width: 0; 
+        height: 0;
+        border-width: 4px;
+        border-style: solid;
+        border-color:#fff transparent transparent transparent;
+        vertical-align: top;
+        margin-top: 8px;
+      }
+    }
+    .room-day {
+      height: 40px;
+      position: absolute;
+      left: 74px;
+      right: 12px;
+      top: 12px;
+      overflow: hidden;
+      z-index: 1;
+      .day-item {
+        li {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          text-align: center;
+          padding-top: 3px;
+          &.current {
+            color: $color-text-primary;
+            background-color: rgba(79, 119, 170, 0.1);
+            border-radius: 50%;
+          }
+          .room-day-num {
+            font-size: 16px;
+          }
+          .room-weeks {
+            font-size: 12px;
+            transform: scale(0.85);
+          }
+        }
+      }
+    }
+  }
+}

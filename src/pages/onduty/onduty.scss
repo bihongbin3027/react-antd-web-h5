@@ -1,0 +1,63 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.onduty-style {
+  .title-list {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    @include flex-layout(center, space-between);
+    .left-tx {
+      font-size: 17px;
+      color: $color-text-primary;
+    }
+    .tab-button-blue-small {
+      @include flex-layout();
+      i {
+        margin-right: 10px;
+      }
+    }
+    + .textarea-dl {
+      padding-top: 0;
+      margin-top: -5px;
+    }
+  }
+}
+
+.worklist-view {
+  text-align: left;
+  .work-time {
+    padding: 12px;
+    background-color: #fff;
+    @include flex-layout(center, flex-start);
+    i {
+      margin-left: 18px;
+    }
+    .tab-button-blue-small + div {
+      @include flex-layout(center, flex-start);
+    }
+  }
+  .pre-list {
+    padding: 15px 12px 0;
+    &.lib-10 {
+      li {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .h6 {
+      font-size: 17px;
+      color: $color-text-primary;
+      margin-bottom: 10px;
+    }
+    ul {
+      li {
+        line-height: 28px;
+        .xm {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

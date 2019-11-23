@@ -1,0 +1,41 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.photo-annex {
+  margin-top: 18px;
+  .top {
+    padding-bottom: 18px;
+    @include flex-layout(center, flex-start);
+    .af {
+      @include flex-layout();
+      i {
+        margin-right: 10px;
+      }
+    }
+    i {
+      margin-right: 18px;
+    }
+  }
+  .annex-li {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -18px;
+    li {
+      position: relative;
+      flex: 0 0 90px;
+      height: 64px;
+      background-color: #efefef;
+      background-position: center, center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-right: 18px;
+      margin-bottom: 18px;
+      s {
+        position: absolute;
+        right: -9px;
+        top: -10px;
+        z-index: 1;
+      }
+    }
+  }
+}

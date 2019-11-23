@@ -1,0 +1,96 @@
+@import './variables';
+
+@mixin min-dpr() {
+  @media(-webkit-min-device-pixel-ratio:1.5), (min-device-pixel-ratio:1.5) {
+    transform: scaleY(0.7);
+  }
+  
+  @media(-webkit-min-device-pixel-ratio:2), (min-device-pixel-ratio:2) {
+    transform: scaleY(0.5);
+  }
+  
+  @media(-webkit-min-device-pixel-ratio:2.5), (min-device-pixel-ratio:2.5) {
+    transform: scaleY(0.333);
+  }
+}
+
+@mixin border-t-1px($color: #ccc) {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-top: 1px solid $color;
+    @include min-dpr();
+  }
+}
+
+@mixin border-b-1px($color: #ccc) {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid $color;
+    @include min-dpr();
+  }
+}
+
+@mixin flex-layout($alignItems: center, $justContent: center, $flexDirection: row) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justContent;
+  flex-direction: $flexDirection;
+}
+
+@mixin tag-button($color: $color-text-primary, $backgroundColor: $color-background-blue, $fontSize: 17px, $padding: 10.5px 10px, $borderRadius: 6px) {
+  display: inline-block;
+  line-height: 1;
+  padding: $padding;
+  color: $color;
+  background-color: $backgroundColor;
+  border: 1px solid transparent;
+  border-radius: $borderRadius;
+  font-size: $fontSize;
+  text-align: center;
+}
+
+@mixin cross-radius($color: $color-text-primary, $backgroundColor: $color-background-blue, $rotate: 0, $width: 20px, $height: 20px, $borderRaduis: 5px) {
+  display: inline-block;
+  background-color: $backgroundColor;
+  width: $width;
+  height: $height;
+  border-radius: $borderRaduis;
+  transform: rotate($rotate);
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: floor($width / 2 / 2);
+    right: floor($width / 2 / 2);
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background-color: $color;
+    transform: scaleY(0.5);
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: floor($width / 2 / 2);
+    bottom: floor($width / 2 / 2);
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background-color: $color;
+    transform: scaleX(0.5);
+    z-index: 1;
+  }
+}

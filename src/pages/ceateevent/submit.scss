@@ -1,0 +1,220 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.event-submie-view {
+  font-size: 16px !important;
+  color: $color-text-secondary !important;
+  .event-time {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    span {
+      @include flex-layout(center, flex-start);
+      margin-right: 35px;
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+  .event-info {
+    @include border-b-1px();
+    margin-top: 8px;
+    padding-bottom: 10px;
+    &.info-normal {
+      padding-top: 12px;
+      padding-bottom: 0;
+      &:after {
+        display: none;
+      }
+      .event-info-li {
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
+      ~.event-time {
+        padding-top: 10px;
+        padding-bottom: 0;
+      }
+    }
+    .event-info-two {
+      display: flex;
+      .event-info-li {
+        flex: 0 0 50%;
+      }
+    }
+    .event-info-li {
+      display: flex;
+      padding-bottom: 18px;
+      .label-left {
+        display: flex;
+        flex: 0 0 68px;
+        align-items: center;
+        &.btn-rows-top {
+          align-items: inherit;
+        }
+      }
+      .level-edit-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        font-style: normal;
+        margin-left: 18px;
+      }
+      .event-flex-center {
+        flex: 1;
+        @include flex-layout(center, space-between);
+        .flex-centers {
+          @include flex-layout(center, flex-start);
+          i {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+          }
+        }
+      }
+      span {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      .cont-right {
+        &.btn-rows-flex {
+          display: flex;
+          flex: 1;
+          justify-content: space-between;
+          .tab-button-blue-small {
+            margin-bottom: 2px;
+          }
+          .add-radius {
+            flex: 0 0 20px;
+            margin-right: 0;
+          }
+        }
+        span,
+        i {
+          vertical-align: middle;
+          margin-right: 15px;
+        }
+        .pd-right {
+          padding-right: 20px;
+          position: relative;
+        }
+        s {
+          position: absolute;
+          right: -8px;
+          top: -9px;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  .textarea-dl {
+    padding-top: 15px;
+    &.f1 {
+      dt {
+        color: inherit;
+      }
+      dd {
+        margin-top: 10px;
+        > div {
+          text-align: center;
+          margin-bottom: 12px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    dt {
+      font-size: 17px;
+      color: $color-text-primary;
+      padding-bottom: 5px;
+      &.switch-label {
+        @include flex-layout(center, space-between);
+      }
+    }
+    dd {
+      &.pt {
+        margin-top: 5px;
+      }
+      &.text-cont,
+      textarea {
+        width: 100%;
+        line-height: 32px;
+        border: 0;
+        font-size: 16px;
+        font-family: inherit;
+        color: $color-text-base;
+      }
+      &.text-cont {
+        padding-top: 5px;
+      }
+    }
+  }
+  .cplaint-name {
+    margin-top: 9px;
+    .label-ti {
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+.process-container {
+  .base-div {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    &.event-info-pt {
+      padding-top: 0;
+      .event-info {
+        padding-top: 10px;
+      }
+    }
+    .event-time {
+      padding-top: 0;
+    }
+    .event-info {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .info-style {
+      padding-bottom: 12px;
+      .label-left {
+        flex: 0 0 82px;
+        &.flex-start {
+          align-items: flex-start;
+        }
+      }
+      .textarea-dl {
+        padding-top: 0;
+      }
+    }
+  }
+  .process-ing {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 16px;
+    .event-flex-center {
+      display: flex;
+      align-items: center;
+      i {
+        margin-right: 12px;
+      }
+    }
+    .cont-right {
+      display: flex;
+      align-items: center;
+      .eidt-icon {
+        margin-left: 18px;
+      }
+    }
+  }
+  .process-foot {
+    text-align: center;
+    button {
+      width: 100%;
+      height: 50px;
+    }
+  }
+}

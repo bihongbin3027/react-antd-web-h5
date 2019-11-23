@@ -1,0 +1,38 @@
+@import '../../style/mixin';
+
+.accordion-tree-style {
+  text-align: left;
+  overflow: auto;
+  .am-accordion-content {
+    padding-left: 10px;
+  }
+  .am-list-thumb {
+    margin-right: 10px !important;
+  }
+  .am-accordion {
+    border-top: 0;
+  }
+  .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
+    border-bottom: 0;
+  }
+  .dl_tree {
+    font-size: 16px;
+    padding-left: 12px;
+    @include border-t-1px();
+    dt {
+      display: flex;
+      height: 44px;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .label-input {
+    display: flex;
+    height: 44px;
+    align-items: center;
+    @include border-t-1px();
+    input {
+      margin-right: 8px;
+    }
+  }
+}

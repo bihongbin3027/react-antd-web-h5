@@ -1,0 +1,127 @@
+@import '../../../style/mixin';
+@import '../../../style/variables';
+
+.affaillist-view {
+  .affillist-tab {
+    height: 92px;
+    background-color: #fff;
+    border-bottom: 1px solid $color-border-primary;
+    @include flex-layout(center, flex-start);
+    li {
+      flex: 0 0 25%;
+      height: 100%;
+      span {
+        font-size: 13px;
+      }
+      position: relative;
+      @include flex-layout(center, center, column);
+      &.active {
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 0;
+          margin-left: -5.5px;
+          border-width: 5.5px;
+          border-style: dashed dashed solid dashed;
+          border-color: transparent transparent $color-border-primary;
+          z-index: 1;
+        }
+      }
+      .tab-dv {
+        position: relative;
+        i {
+          display: block;
+          width: 24px;
+          height: 24px;
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: contain;
+          margin-bottom: 8px;
+          &.processed-icon {
+            background-image: url('../../../images/daiban12@2x.png');
+          }
+          &.processing-icon {
+            background-image: url('../../../images/yichuli1@2x.png');
+          }
+          &.fulfill-icon {
+            background-image: url('../../../images/chulizhong1@2x.png');
+          }
+          &.treatment-icon {
+            background-image: url('../../../images/xingzheng_active@2x.png');
+          }
+          &.complaint-icon {
+            background-image: url('../../../images/tousu_active@2x.png');
+          }
+        }
+        b {
+          position: absolute;
+          right: -9px;
+          top: -8px;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  .month-add {
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    @include flex-layout(center, space-between);
+    .month-switch {
+      @include flex-layout();
+    }
+    .create-log {
+      @include flex-layout();
+      i,
+      .tab-button-blue-small {
+        margin-left: 10px;
+      }
+    }
+  }
+  .affail-table {
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #fff;
+    .table {
+      td {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        [class|=badge] {
+          min-width: 64px;
+        }
+      }
+    }
+    .tb-name {
+      font-size: 16px;
+    }
+    .end-time {
+      margin-top: 10px;
+      font-size: 14px;
+      transform: scale(0.85);
+      margin-right: -7px;
+    }
+    .name-time {
+      font-size: 18px;
+    }
+    .end-td {
+      .name-text {
+        font-size: 12px;
+      }
+    }
+    .doctor-row {
+      margin-top: 10px;
+      span {
+        margin-right: 8px;
+      }
+    }
+  }
+  .button-article {
+    position: fixed;
+    bottom: 50px;
+    z-index: 1;
+  }
+}

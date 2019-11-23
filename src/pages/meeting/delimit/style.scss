@@ -1,0 +1,49 @@
+@import '../../../style/variables';
+
+.meeting-edit {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background-color: #f7f7f7 !important;
+  .me-top {
+    padding: 12px;
+    background-color: #fff;
+    .me-title {
+      display: block;
+      width: 100%;
+      color: $color-text-primary;
+      font-size: 20px;
+      border: 0 none;
+    }
+    .me-content {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 12px;
+      border: 0 none;
+    }
+    .me-file {
+      padding-bottom: 5px;
+    }
+  }
+  .meeting-date-wrap {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .crew {
+    margin-top: 12px;
+  }
+  .list-item-switch {
+    .am-list-extra {
+      padding-bottom: 0;
+    }
+    .am-list-content {
+      padding-bottom: 0;
+      color: #999 !important;
+      font-size: 14px !important;
+      i {
+        margin-right: 3px;
+        margin-top: 1px;
+      }
+    }
+  }
+}

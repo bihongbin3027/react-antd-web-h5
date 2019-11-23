@@ -1,0 +1,179 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.tab-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 3;
+  .ml-popover {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0;
+    width: 100%;
+    z-index: 1999;
+    display: flex;
+    justify-content: center;
+    .ml-popover-mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      height: 100%;
+      z-index: 999;
+    }
+    .ml-popover-parent {
+      position: absolute;
+      bottom: 52px;
+      z-index: 1000;
+    }
+    .ml-popover-content {
+      position: relative;
+      .ml-popover-arrow {
+        position: absolute;
+        left: 50%;
+        bottom: -3.5px;
+        width: 7px;
+        height: 7px;
+        margin-left: -4px;
+        border-radius: 1px;
+        background-color: #fff;
+        transform: rotate(45deg);
+        z-index: 0;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.21);
+        transform: rotate(225deg);
+      }
+      .ml-popover-inner {
+        color: #000;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.21);
+        overflow: hidden;
+        .ml-popover-inner-wrapper {
+          position: relative;
+          background-color: #fff;
+          .ml-popover-item {
+            padding-left: 22px;
+            padding-right: 22px;
+            &:not(:first-child) {
+              .ml-popover-item-container {
+                border-top: 1px solid #ddd;
+              }
+            }
+            .ml-popover-item-container {
+              position: relative;
+              display: flex;
+              align-items: center;
+              height: 50px;
+              box-sizing: border-box;
+              padding: 0 8px;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  ul {
+    display: flex;
+    @include border-t-1px();
+    li {
+      height: 50px;
+      flex: 1;
+      font-size: 12px;
+      a {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: $color-text-caption;
+        @include flex-layout(center, center, column);
+        &.active {
+          color: $color-text-primary;
+          .workcenter-icon {
+            background-image: url('../../images/gongzuozhongxin_active@2x.png');
+          }
+          .myjob-icon {
+            background-image: url('../../images/wode_active@2x.png');
+          }
+          .dutylog-icon {
+            background-image: url('../../images/dutylog_active@2x.png');
+          }
+          .schedule-icon {
+            background-image: url('../../images/paibanbiao_active@2x.png');
+          }
+          .myhuiyi-icon {
+            background-image: url('../../images/wodehuiyi_active@2x.png');
+          }
+          .huiyishi-icon {
+            background-image: url('../../images/huiyishi_active@2x.png');
+          }
+        }
+        i {
+          width: 27px;
+          height: 27px;
+          margin-bottom: -2px;
+          &.workcenter-icon {
+            background-image: url('../../images/gongzuozhongxin@2x.png');
+          }
+          &.myjob-icon {
+            background-image: url('../../images/wode@2x.png');
+          }
+          &.dutylog-icon {
+            background-image: url('../../images/dutylog.png');
+          }
+          &.schedule-icon {
+            background-image: url('../../images/paibanbiao@2x.png');
+          }
+          &.myhuiyi-icon {
+            background-image: url('../../images/wodehuiyi@2x.png');
+          }
+          &.huiyishi-icon {
+            background-image: url('../../images/huiyishi@2x.png');
+          }
+        }
+        .text {
+          transform: scale(0.85);
+        }
+      }
+      .add {
+        width: 100%;
+        height: 100%;
+        @include flex-layout();
+        .add-icon {
+          width: 38px;
+          height: 38px;
+          background-color: $color-background-primary;
+          border-radius: 100%;
+          position: relative;
+          &:before,
+          &:after {
+            content: '';
+            position: absolute;
+            background-color: #fff;
+            z-index: 1;
+          }
+          &:before {
+            left: 10px;
+            right: 10px;
+            top: 50%;
+            height: 2px;
+            margin-top: -1px;
+          }
+          &:after {
+            top: 10px;
+            bottom: 10px;
+            left: 50%;
+            width: 2px;
+            margin-left: -1px;
+          }
+        }
+      }
+    }
+  }
+}

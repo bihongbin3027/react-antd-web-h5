@@ -1,0 +1,24 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.event-tcalendar {
+  background-color: #fff;
+  overflow: hidden;
+  .event-time-select {
+    padding: 12px;
+    li {
+      margin-right: 18px;
+    }
+  }
+  .event-display-time {
+    @include flex-layout(center, space-between);
+    font-size: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 10px;
+    .edt-right {
+      font-size: 14px;
+      color: $color-text-caption;
+    }
+  }
+}
